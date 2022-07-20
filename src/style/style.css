@@ -68,6 +68,7 @@
   height: 100%;
   overflow: auto;
   gap: 10px;
+  min-height: 350px;
 }
 
 .chat__text-content {
