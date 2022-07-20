@@ -25,6 +25,7 @@ session_start();
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../style/style.css">
   <script src='../scripts/logout.js' defer></script>
   <script src='../scripts/timer.js' defer></script>
   <title>Auth</title>
@@ -33,19 +34,23 @@ session_start();
 <body>
   <div class='page'>
     <header class='header'>
+      <h1 class='header__title'>Messenger</h1>
       <?php 
         if($this->data['auth']->isAuth) {
           ?>
-      <button class='auth__logout'>Logout</button>
-      <p>Привет <?php echo $this->data['user']->name ?>!</p>
+      <div class='header__logout'>
+        <button class='header__button header__button_logout'>🚪⇤</button>
+        <p>Привет <?php echo $this->data['user']->name ?>!</p>
+      </div>
+      <?php 
+        }
+        ?>
     </header>
     <main class='main'>
-      <section class="chat">
-        <?php include __DIR__ . '/posts.php' ?>
-      </section>
+      <?php $this->data['auth']->isAuth && include __DIR__ . '/posts.php' ?>
       <section class='auth'>
         <?php
-      } else {
+      if($this->data['auth']->isAuth === false) {
         ?>
         <?php !($_GET['login'] ?? '') && include __DIR__ . '/registerForm.php' ?>
         <?php ($_GET['login'] ?? '') && include __DIR__ . '/loginForm.php' ?>

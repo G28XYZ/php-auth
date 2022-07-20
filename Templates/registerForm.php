@@ -13,7 +13,7 @@ if(isset($_POST['name']) && isset($_POST['password']) && isset($_POST['email']))
 ?>
 
 <h2 class='auth'>Register user</h2>
-<form action="" method="post">
+<form action="" method="post" class='auth__form'>
   <p><?php echo $isRegister ? 'Пользователь уже зарегистрирован' : '' ?></p>
   <input type="text" name="name" placeholder="name" value="<?php echo $_POST['name'] ?? '' ?>">
   <input type="text" name="email" placeholder="email" value="<?php echo $_POST['email'] ?? '' ?>">

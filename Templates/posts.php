@@ -8,17 +8,24 @@ if(isset($_POST['message'])) {
   header('Location: /');
 }
 ?>
-<?php
-foreach($posts as $post) {?>
-<article>
-  <h2>User: <?php echo $post['author'] ?></h2>
-  <p>Message: <?php echo $post['content'] ?></p>
-</article>
-<?php
-}
-?>
+<section class='chat'>
+  <p class='timer'></p>
 
-<form action="" method="post">
-  <textarea name="message" cols="30" rows="10"></textarea>
-  <button type='submit'>Send</button>
-</form>
+  <div class='chat__messages'>
+    <?php
+  foreach($posts as $post) {
+    ?>
+    <article class="chat__post">
+      <h3 class="chat__user">User: <?= $post['author'] ?></h3>
+      <p class='chat__text-content'>Message: <?php echo $post['content'] ?></p>
+    </article>
+    <?php
+  }
+  ?>
+  </div>
+
+  <form action="" method="post" class='chat__textarea'>
+    <textarea name="message" cols="30" rows="5"></textarea>
+    <button type='submit'>Send</button>
+  </form>
+</section>
