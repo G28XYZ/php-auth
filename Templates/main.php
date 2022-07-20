@@ -28,6 +28,7 @@ session_start();
   <link rel="stylesheet" href="../style/style.css">
   <script src='../scripts/logout.js' defer></script>
   <script src='../scripts/timer.js' defer></script>
+  <script src='../scripts/editMessage.js' defer></script>
   <title>Auth</title>
 </head>
 
@@ -40,7 +41,7 @@ session_start();
           ?>
       <div class='header__logout'>
         <button class='header__button header__button_logout'>🚪⇤</button>
-        <p>Привет <?php echo $this->user->name ?>!</p>
+        <p>Привет <?php echo $this->user->full_name ?>!</p>
       </div>
       <?php 
         }

@@ -8,7 +8,7 @@ function getRemains() {
   const remains = parseInt(300 - (date.getTime() / 1000 - timeFromCookie));
   timer.textContent = "Сессия закончится через " + remains + " сек.";
   if (remains <= 0) {
-    document.location.href = "/";
+    document.location.href = "/?login=1";
     clearInterval(getRemains);
   }
   return remains;

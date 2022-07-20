@@ -11,7 +11,7 @@ class User extends \Model {
   public $email;
 
   public function setUser(array $userData) {
-    $this->full_name = $userData['full_name'];
+    $this->full_name = $userData['name'];
     $this->email = $userData['email'];
     $this->id = $userData['id'];
   }

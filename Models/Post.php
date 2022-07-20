@@ -10,14 +10,4 @@ class Post extends \Model {
   public $author;
   public $content;
 
-  public function createPost($text, $author, $id) {
-    $this->content = $text;
-    $this->author = $author;
-    $this->user_post_id = $id;
-
-    if(strlen($text)) {
-      $this->insert();
-    }
-  }
-
 }

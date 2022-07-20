@@ -32,9 +32,10 @@ class Auth extends \Model {
   }
   
   public function login($email, $password) {
-    $user =$this->findUserByEmail($email);
+    $user = $this->findByParameter('email', $email);
+    var_dump($user);
     if($user) {
-      $passwordVerify = password_verify($password . 'JWT_SECRET', $user['password']);
+      $passwordVerify = password_verify($password . 'JWT_SECRET', $user->password);
       if($passwordVerify) {
         $token = $this->_generateToken($user);
         return ['token' => $token];
