@@ -1,10 +1,10 @@
 <?php
-$posts = $this->data['post']->getAllPosts();
+$posts = $this->post->getAllPosts();
 
 if(isset($_POST['message'])) {
-  $author = $this->data['user']->name;
-  $id = $this->data['user']->id;
-  $this->data['post']->createPost($_POST['message'], $author, $id);
+  $author = $this->user->name;
+  $id = $this->user->id;
+  $this->post->createPost($_POST['message'], $author, $id);
   header('Location: /');
 }
 ?>

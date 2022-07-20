@@ -3,9 +3,9 @@
 $isRegister = false;
 
 if(isset($_POST['name']) && isset($_POST['password']) && isset($_POST['email'])) {
-  $isRegister = $this->data['auth']->findUserByEmail($_POST['email']);
+  $isRegister = $this->auth->findUserByEmail($_POST['email']);
   if($isRegister === false) {
-    $this->data['auth']->createUser($_POST);
+    $this->auth->createUser($_POST);
     header("Location: ./?login=1");
   }
 }

@@ -3,7 +3,7 @@
 $message = '';
 
 if(isset($_POST['email']) && isset($_POST['password'])) {
-    $res = $this->data['auth']->login($_POST['email'], $_POST['password']);
+    $res = $this->auth->login($_POST['email'], $_POST['password']);
     if(isset($res['token'])) {
       var_dump($token);
       // установить jwt токен на 5 мин

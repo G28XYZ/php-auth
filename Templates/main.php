@@ -4,10 +4,10 @@ session_start();
 <?php
   $token = $_COOKIE['jwt'] ?? '';
   if($token) {
-    $res = $this->data['auth']->verifyToken($token);
+    $res = $this->auth->verifyToken($token);
     if(isset($res['payload'])) {
-      $this->data['user']->setUser($res['payload']['name'], $res['payload']['id']);
-      $this->data['auth']->setAuth(true);
+      $this->user->setUser($res['payload']['name'], $res['payload']['id']);
+      $this->auth->setAuth(true);
     }
   }
 
@@ -36,21 +36,21 @@ session_start();
     <header class='header'>
       <h1 class='header__title'>Messenger</h1>
       <?php 
-        if($this->data['auth']->isAuth) {
+        if($this->auth->isAuth) {
           ?>
       <div class='header__logout'>
         <button class='header__button header__button_logout'>🚪⇤</button>
-        <p>Привет <?php echo $this->data['user']->name ?>!</p>
+        <p>Привет <?php echo $this->user->name ?>!</p>
       </div>
       <?php 
         }
         ?>
     </header>
     <main class='main'>
-      <?php $this->data['auth']->isAuth && include __DIR__ . '/posts.php' ?>
+      <?php $this->auth->isAuth && include __DIR__ . '/posts.php' ?>
       <section class='auth'>
         <?php
-      if($this->data['auth']->isAuth === false) {
+      if($this->auth->isAuth === false) {
         ?>
         <?php !($_GET['login'] ?? '') && include __DIR__ . '/registerForm.php' ?>
         <?php ($_GET['login'] ?? '') && include __DIR__ . '/loginForm.php' ?>
