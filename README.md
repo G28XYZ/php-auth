@@ -25,7 +25,7 @@
 
 #### Клонировать репозиторий
 
-`git clone https://github.com/G28XYZ/php-auth`
+`git clone https://github.com/G28XYZ/php-auth.git`
 
 #### Перейти в каталог
 
