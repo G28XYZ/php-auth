@@ -33,7 +33,6 @@ class Auth extends \Model {
   
   public function login($email, $password) {
     $user = $this->findByParameter('email', $email);
-    var_dump($user);
     if($user) {
       $passwordVerify = password_verify($password . 'JWT_SECRET', $user->password);
       if($passwordVerify) {

@@ -1,6 +1,7 @@
 <?php
 
-if(isset($_POST['name']) && isset($_POST['password']) && isset($_POST['email'])) {
+
+if(isset($_POST['name']) && $_POST['name'] && $_POST['password'] && $_POST['email']) {
   $this->auth->isRegister = $this->user->findByParameter('email', $_POST['email']);
   if($this->auth->isRegister === false) {
     $this->user->createUser($_POST);
