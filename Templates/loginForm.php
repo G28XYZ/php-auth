@@ -5,7 +5,6 @@ $message = '';
 if(isset($_POST['email']) && isset($_POST['password'])) {
     $res = $this->auth->login($_POST['email'], $_POST['password']);
     if(isset($res['token'])) {
-      var_dump($token);
       // установить jwt токен на 5 мин
       setcookie('jwt', $res['token'], time() + 300);
       // установить время логина

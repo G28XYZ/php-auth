@@ -2,31 +2,21 @@
 
 namespace Models;
 
-class Post {
+class Post extends \Model {
+
+  protected const TABLE = 'posts';
   
-  protected $db;
-
-  public function __construct($db)
-  { 
-    $this->db = $db;
-  }
-
-  public function getAllPosts() {
-    $sql = 'SELECT * FROM posts';
-    return $this->db->query($sql);
-  }
+  public $user_post_id;
+  public $author;
+  public $content;
 
   public function createPost($text, $author, $id) {
-    var_dump($text);
+    $this->content = $text;
+    $this->author = $author;
+    $this->user_post_id = $id;
+
     if(strlen($text)) {
-      $sql = "INSERT
-              INTO posts(content,author,user_post_id)
-              VALUES(
-              '$text',
-              '$author',
-              '$id'
-            );";
-      $this->db->execute($sql,[]);
+      $this->insert();
     }
   }
 

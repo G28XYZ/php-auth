@@ -9,11 +9,10 @@ use Models\Auth;
 require __DIR__ . '/autoload.php';
 
 
-$db = new Db();
-$user = new User();
 $view = new View();
-$post = new Post($db);
-$auth = new Auth($db);
+$user = new User();
+$post = new Post();
+$auth = new Auth();
 
 $view->auth = $auth;
 $view->user = $user;

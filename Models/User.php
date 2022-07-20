@@ -2,12 +2,25 @@
 
 namespace Models;
 
-class User {
-  public $name = 'unknown';
-  public $id = null;
+class User extends \Model {
 
-  public function setUser(string $name, $id) {
-    $this->name = $name;
-    $this->id = $id;
+  protected const TABLE = 'users';
+
+  public $full_name = 'unknown';
+  public $password;
+  public $email;
+
+  public function setUser(array $userData) {
+    $this->full_name = $userData['full_name'];
+    $this->email = $userData['email'];
+    $this->id = $userData['id'];
+  }
+
+  public function createUser(array $data) {
+    $data['password'] = password_hash($data['password'] . 'JWT_SECRET', PASSWORD_DEFAULT);
+    $this->email = $data['email'];
+    $this->password = $data['password'];
+    $this->full_name = $data['name'];
+    $this->insert();
   }
 }

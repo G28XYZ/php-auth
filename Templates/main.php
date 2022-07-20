@@ -6,8 +6,8 @@ session_start();
   if($token) {
     $res = $this->auth->verifyToken($token);
     if(isset($res['payload'])) {
-      $this->user->setUser($res['payload']['name'], $res['payload']['id']);
-      $this->auth->setAuth(true);
+      $this->user->setUser($res['payload']);
+      $this->auth->isAuth = true;
     }
   }
 

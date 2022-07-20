@@ -1,11 +1,9 @@
 <?php
 
-$isRegister = false;
-
 if(isset($_POST['name']) && isset($_POST['password']) && isset($_POST['email'])) {
-  $isRegister = $this->auth->findUserByEmail($_POST['email']);
-  if($isRegister === false) {
-    $this->auth->createUser($_POST);
+  $this->auth->isRegister = $this->user->findByParameter('email', $_POST['email']);
+  if($this->auth->isRegister === false) {
+    $this->user->createUser($_POST);
     header("Location: ./?login=1");
   }
 }
@@ -14,7 +12,7 @@ if(isset($_POST['name']) && isset($_POST['password']) && isset($_POST['email']))
 
 <h2 class='auth'>Register user</h2>
 <form action="" method="post" class='auth__form'>
-  <p><?php echo $isRegister ? 'Пользователь уже зарегистрирован' : '' ?></p>
+  <p><?php echo $this->auth->isRegister ? 'Пользователь уже зарегистрирован' : '' ?></p>
   <input type="text" name="name" placeholder="name" value="<?php echo $_POST['name'] ?? '' ?>">
   <input type="text" name="email" placeholder="email" value="<?php echo $_POST['email'] ?? '' ?>">
   <input type="password" name="password" placeholder="password" value="<?php echo $_POST['password'] ?? '' ?>">

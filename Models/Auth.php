@@ -3,41 +3,13 @@
 
 namespace Models;
 
-class Auth {
+class Auth extends \Model {
+
+  protected const TABLE = 'auth';
+
+  public $data = [];
   public $isAuth = false;
-  public $db;
-
-  public function __construct($db)
-  {
-    $this->db = $db;
-  }
-
-  public function setAuth($bool) {
-    $this->isAuth = $bool;
-  }
-  
-  public function createUser(array $data) {
-    if(isset($data['name']) && isset($data['password'])) {
-      $data['password'] = password_hash($data['password'] . 'JWT_SECRET', PASSWORD_DEFAULT);
-      $email = $data['email'];
-      $password = $data['password'];
-      $name = $data['name'];
-      $sql = "INSERT
-              INTO users(email,password,full_name)
-              VALUES(
-              '$email',
-              '$password',
-              '$name'
-            );";
-
-      $this->db->execute($sql,[]);
-    }
-  }
-  
-  public function findUserByEmail($email) {
-    $sql = "SELECT * FROM users WHERE email='$email'";
-    return $this->db->query($sql)[0] ?? false;
-  }
+  public $isRegister = false;
   
   protected function _generateToken($userData) {
     $key = 'JWT_SECRET';

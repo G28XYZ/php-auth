@@ -12,10 +12,6 @@ class View {
     return $this->data[$name];
   }
 
-  public function assign($name, $value) {
-    $this->data[$name] = $value;
-  }
-
   public function display($template) {
     echo $this->render($template);
   }
