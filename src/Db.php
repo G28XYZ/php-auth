@@ -15,7 +15,8 @@ class Db
 
     protected function __construct()
     {
-        $this->dbh = new \PDO('mysql:host=localhost;dbname=php-auth', 'root', '');
+        // $this->dbh = new \PDO('mysql:host=localhost;dbname=php-auth', 'root', '');
+        $this->dbh = new \PDO('pgsql:host=db;dbname=postgres', 'postgres', 'postgres');
     }
 
     public function query($sql, $class): array

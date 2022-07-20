@@ -8,8 +8,9 @@
 
 <ul>
   <li>PHP</li>
-  <li>Mysql</li>
+  <li>Mysql/Postgres</li>
   <li>Javascript</li>
+  <li>Docker</li>
 </ul>
 
 ## Функционал
@@ -23,14 +24,23 @@
 
 ## Установка
 
+#### Для корректной работы нужно установить докер
+
+Выберите подходящий дистрибутив и установите клиент докер
+`https://docs.docker.com/engine/install/`
+
 #### Клонировать репозиторий
 
 `git clone https://github.com/G28XYZ/php-auth.git`
 
 #### Перейти в каталог
 
-`cd php-auth`
+`cd ./php-auth/.docker`
 
-#### Запустить локальный сервер и перейти по адресу - http://localhost:8090
+#### Соберите контейнер
 
-`php -S localhost:8090`
+`docker-compose up -d`
+
+#### Перейдите по адресу
+
+`http://localhost:60`

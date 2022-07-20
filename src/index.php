@@ -8,11 +8,11 @@ use Models\Auth;
 
 require __DIR__ . '/autoload.php';
 
-
-$view = new View();
 $user = new User();
 $post = new Post();
 $auth = new Auth();
+
+$view = new View();
 
 $view->auth = $auth;
 $view->user = $user;

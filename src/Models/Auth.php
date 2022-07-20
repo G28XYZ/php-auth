@@ -26,7 +26,7 @@ class Auth extends \Model {
     $signatureDecode = base64_decode(explode('.', $token)[1]);
     if(hash_equals($signature, $signatureDecode)) {
       $dataDecode = json_decode(base64_decode($dataEncoded));
-      return ['payload'=> ['name' => $dataDecode->full_name, 'email'=>$dataDecode->email, 'id'=>$dataDecode->user_id]];
+      return ['payload'=> ['name' => $dataDecode->full_name, 'email'=>$dataDecode->email, 'id'=>$dataDecode->id]];
     }
     return [];
   }
