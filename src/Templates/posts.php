@@ -41,20 +41,21 @@ if(isset($_GET['userId'])) {
         $isAuthor = true;
        } else {
         $isAuthor = false;
-       } ?>
-    <article class="chat__post">
+       }
+       ?>
+    <article class="card chat__post">
       <h3 class="chat__user">User: <?php echo $post->author ?></h3>
       <p class='chat__text-content'>Message: <?php echo $post->content ?></p>
 
       <button data-user-id='<?php echo $this->user->id ?>' data-post-id='<?php echo $post->id ?>'
-        class='chat__edit-button <?php echo $isAuthor ? 'chat__edit-button_active' : '' ?>'>Edit</button>
+        class='btn btn-light chat__edit-button <?php echo $isAuthor ? 'chat__edit-button_active' : '' ?>'>Edit</button>
 
     </article>
     <?php endforeach; ?>
   </div>
 
   <form action="" method="post" class='chat__textarea'>
-    <textarea name="message" cols="30" rows="5"></textarea>
-    <button type='submit'>Send</button>
+    <textarea class="form-control" name="message" cols="30" rows="5"></textarea>
+    <button class="btn btn-outline-success" type='submit'>Send</button>
   </form>
 </section>

@@ -17,14 +17,15 @@ if(isset($_POST['email']) && isset($_POST['password'])) {
 
 ?>
 
-<h2>Login user</h2>
-<form action='' method='post' name='login' class='auth__form'>
+<h2 class='auth__title'>Вход</h2>
+<form action='' method='post' name='login' class='auth__form mb-3'>
   <p><?php echo $message ?? '' ?></p>
-  <input type="text" name="email" placeholder="email" value="<?php echo $_POST['email'] ?? '' ?>">
-  <input type="password" name="password" placeholder="password" value="<?php echo $_POST['password'] ?? '' ?>">
-  <button type="submit">Login</button>
+  <input class="form-control" type="text" name="email" placeholder="email" value="<?php echo $_POST['email'] ?? '' ?>">
+  <input class="form-control" type="password" name="password" placeholder="password"
+    value="<?php echo $_POST['password'] ?? '' ?>">
+  <button class="btn btn-primary" type="submit">Войти</button>
 </form>
 <p>
-  Not register?
-  <a href="/">Register</a>
+  Не зарегистрированы?
+  <a class="breadcrumb" href="/">Зарегистрироваться</a>
 </p>

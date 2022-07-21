@@ -2,7 +2,7 @@
 
 ## Demo:
 
-<img src="https://github.com/G28XYZ/G28XYZ/blob/main/images/demo-auth-php.gif" alt='demo'/>
+<img src="https://github.com/G28XYZ/G28XYZ/blob/main/images/demo-php.gif" alt='demo'/>
 
 ## Стек:
 
