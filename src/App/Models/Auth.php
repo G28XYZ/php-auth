@@ -1,9 +1,10 @@
 <?php
 
 
-namespace Models;
+namespace App\Models;
+use App\Model;
 
-class Auth extends \Model {
+class Auth extends Model {
 
   protected const TABLE = 'auth';
 

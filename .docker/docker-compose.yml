@@ -22,7 +22,7 @@ services:
         depends_on:
             - db
         env_file:
-            - ./../.env
+            - ./../src/.env
         environment:
             - APP_ENV=${APP_ENV}
             - APP_SECRET=${APP_SECRET}
@@ -32,10 +32,10 @@ services:
     db:
         container_name: db
         build:
-            context: ./pgsql 
+            context: ./pgsql
         restart: always
         env_file:
-            - ./../.env
+            - ./../src/.env
         environment:
             POSTGRES_PASSWORD: postgres
             POSTGRES_DB: postgres

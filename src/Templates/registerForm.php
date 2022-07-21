@@ -5,7 +5,7 @@ if(isset($_POST['name']) && $_POST['name'] && $_POST['password'] && $_POST['emai
   $this->auth->isRegister = $this->user->findByParameter('email', $_POST['email']);
   if($this->auth->isRegister === false) {
     $this->user->createUser($_POST);
-    header("Location: ./?login=1");
+    header("Location: /?login=1");
   }
 }
 
@@ -21,5 +21,5 @@ if(isset($_POST['name']) && $_POST['name'] && $_POST['password'] && $_POST['emai
 </form>
 <p>
   Register?
-  <a href="./?login=1">Login</a>
+  <a href="/?login=1">Login</a>
 </p>

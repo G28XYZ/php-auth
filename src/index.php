@@ -1,22 +1,27 @@
 <?php
 
-require_once __DIR__ . '/Db.php';
-
-use Models\User;
-use Models\Post;
-use Models\Auth;
+declare(strict_types=1);
 
 require __DIR__ . '/autoload.php';
 
-$user = new User();
-$post = new Post();
-$auth = new Auth();
+use App\Exceptions\NotFound;
+use App\Exceptions\ServerError;
 
-$view = new View();
+$ctrl = $_GET['ctrl'] ?? 'Index';
 
-$view->auth = $auth;
-$view->user = $user;
-$view->post = $post;
+$class = '\\App\Controllers\\' . $ctrl;
 
-$html = $view->render(__DIR__ . '/Templates/main.php');
-echo $html;
+if(!class_exists($class)) {
+    die('Страницы не существует');
+}
+
+$controller = new $class;
+$controller();
+try {
+} catch(NotFound $ex) {
+    http_response_code(404);
+} catch(ServerError $ex) {
+    http_response_code(500);
+} catch(Throwable $ex) {
+    die('Неизвестная ошибка');
+}

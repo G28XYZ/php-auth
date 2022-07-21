@@ -26,5 +26,5 @@ if(isset($_POST['email']) && isset($_POST['password'])) {
 </form>
 <p>
   Not register?
-  <a href="./">Register</a>
+  <a href="/">Register</a>
 </p>

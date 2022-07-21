@@ -1,5 +1,8 @@
 <?php
 
+namespace App;
+
+use PDO;
 class Db
 {
     protected static $instance = null;
@@ -16,13 +19,13 @@ class Db
     protected function __construct()
     {
         // $this->dbh = new \PDO('mysql:host=localhost;dbname=php-auth', 'root', '');
-        $this->dbh = new \PDO('pgsql:host=db;dbname=postgres', 'postgres', 'postgres');
+        $this->dbh = new PDO('pgsql:host=db;dbname=postgres', 'postgres', 'postgres');
     }
 
-    public function query($sql, $class): array
+    public function query($sql, $class, $param=[]): array
     {
         $sth = $this->dbh->prepare($sql);
-        $sth->execute();
+        $sth->execute($param);
         return $sth->fetchAll(PDO::FETCH_CLASS, $class);
     }
 

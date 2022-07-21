@@ -1,5 +1,8 @@
 <?php
 
+namespace App;
+use App\Db;
+
 // модель для инкапсуляции работы с бд в других классах
 abstract class Model
 {
@@ -16,8 +19,9 @@ abstract class Model
 
     public function findByParameter($name, $value) {
         $db = Db::instance();
-        $sql = "SELECT * FROM users WHERE $name='$value'";
-        return $db->query($sql, static::class)[0] ?? false;
+        $sql = "SELECT * FROM users WHERE $name=:value";
+        $data = $db->query($sql, static::class, [':value'=>$value]);
+        return $data[0] ?? false;
     }
 
     public function insert() {

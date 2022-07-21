@@ -1,8 +1,9 @@
 <?php
 
-namespace Models;
+namespace App\Models;
+use App\Model;
 
-class Post extends \Model {
+class Post extends Model {
 
   protected const TABLE = 'posts';
   
