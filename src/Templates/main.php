@@ -31,7 +31,7 @@ session_start();
   <script src='../scripts/logout.js' defer></script>
   <script src='../scripts/timer.js' defer></script>
   <script src='../scripts/editMessage.js' defer></script>
-  <title>Auth</title>
+  <title>Messenger</title>
 </head>
 
 <body>

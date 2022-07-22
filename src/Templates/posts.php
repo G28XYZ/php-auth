@@ -36,13 +36,8 @@ if(isset($_GET['userId'])) {
     <?php
     foreach($posts as $post) : ?>
 
-    <?php
-    if($this->user->id == $post->user_post_id) {
-        $isAuthor = true;
-       } else {
-        $isAuthor = false;
-       }
-       ?>
+    <?php $isAuthor = $this->user->id == $post->user_post_id; ?>
+
     <article class="card chat__post">
       <h3 class="chat__user">User: <?php echo $post->author ?></h3>
       <p class='chat__text-content'>Message: <?php echo $post->content ?></p>
