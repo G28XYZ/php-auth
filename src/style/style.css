@@ -84,10 +84,11 @@
   overflow: auto;
   gap: 10px;
   min-height: 350px;
+  width: 100%;
 }
 
 .chat__text-content {
-  width: 250px;
+  width: auto;
 }
 
 .chat__edit-button {
@@ -104,6 +105,15 @@
   border-radius: 15px;
   padding: 5px;
   box-sizing: border-box;
+  width: 70%;
+}
+
+.chat__post-author {
+  align-self: end;
+}
+
+.chat__user {
+  font-size: 20px;
 }
 
 .chat__textarea {

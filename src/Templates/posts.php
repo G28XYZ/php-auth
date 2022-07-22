@@ -32,13 +32,13 @@ if(isset($_GET['userId'])) {
 <section class='chat'>
   <p class='timer'></p>
 
-  <div class='chat__messages'>
+  <div class='card chat__messages'>
     <?php
     foreach($posts as $post) : ?>
 
     <?php $isAuthor = $this->user->id == $post->user_post_id; ?>
 
-    <article class="card chat__post">
+    <article class="card chat__post <?php echo $isAuthor ? 'chat__post-author' : '' ?>">
       <h3 class="chat__user">User: <?php echo $post->author ?></h3>
       <p class='chat__text-content'>Message: <?php echo $post->content ?></p>
 
