@@ -15,9 +15,9 @@ if(!class_exists($class)) {
     die('Страницы не существует');
 }
 
-$controller = new $class;
-$controller();
 try {
+    $controller = new $class;
+    $controller();
 } catch(NotFound $ex) {
     http_response_code(404);
 } catch(ServerError $ex) {
