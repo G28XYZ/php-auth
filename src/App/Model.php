@@ -70,15 +70,11 @@ abstract class Model
         }
     }
 
-    public function delete() {
-        if(isset($this->id)) {
-
-            $sql = 'DELETE FROM ' . static::TABLE .
-            ' WHERE id=:id';
-
-            $db = Db::instance();
-            $db->execute($sql, [':id'=>$this->id]);
-        }
+    public function delete($id) {
+        $sql = 'DELETE FROM ' . static::TABLE .
+        ' WHERE id=:id';
+        $db = Db::instance();
+        $db->execute($sql, [':id'=>$id]);
     }
 
 }

@@ -30,7 +30,7 @@ session_start();
     integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
   <script src='../scripts/logout.js' defer></script>
   <script src='../scripts/timer.js' defer></script>
-  <script src='../scripts/editMessage.js' defer></script>
+  <script src='../scripts/messageButtons.js' defer></script>
   <title>Messenger</title>
 </head>
 
