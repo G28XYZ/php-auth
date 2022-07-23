@@ -2,20 +2,16 @@
 
 
 if(isset($_POST['name']) && $_POST['password'] && $_POST['email']) {
-    var_dump($this->validation->validateEmail($_POST['email']));
-    var_dump($this->validation->validateName($_POST['name']));
-    var_dump($this->validation->validatePassword($_POST['password']));
 
+  if($this->validation->checkValidation($_POST)) {
 
-//   if($this->validation->checkValidation($_POST)) {
+    $this->auth->isRegister = $this->user->findByParameter('email', $_POST['email']);
 
-//     $this->auth->isRegister = $this->user->findByParameter('email', $_POST['email']);
-
-//     if($this->auth->isRegister === false) {
-//       $this->user->createUser($_POST);
-//       header("Location: /?login=1");
-//     }
-//   }
+    if($this->auth->isRegister === false) {
+      $this->user->createUser($_POST);
+      header("Location: /?login=1");
+    }
+  }
 }
 ?>
 
