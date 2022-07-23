@@ -62,9 +62,9 @@ abstract class Model
         $db->execute($sql, $data);
     }
 
-    public function save($id='') {
-        $this->id = $id;
-        if($this->id) {
+    public function save($id=null) {
+        if($id) {
+            $this->id = $id;
             $this->update();
         } else {
             $this->insert();

@@ -11,11 +11,11 @@ foreach($posts as $post) {
 }
 
 if(isset($_POST['message'])) {
-  
+
   $this->post->author = $this->user->full_name;
   $this->post->user_post_id = $this->user->id;
   $this->post->content = $_POST['message'];
-  
+
   if(strlen($_POST['message'])) {
     $this->post->save($_GET['postId'] ?? '');
     header('Location: /');
@@ -61,8 +61,8 @@ if(isset($_GET['userId'])) {
   </div>
 
   <form action="" method="post" class='chat__textarea'>
-    <textarea class="chat__textarea-content form-control" name="message" cols="30" rows="5" minlength="1" required><?php echo $editMessage ?>
-    </textarea>
+    <textarea class="chat__textarea-content form-control" name="message" cols="30" rows="5" minlength="1"
+      required><?php echo $editMessage ?></textarea>
     <button class="btn <?php echo $editMessage ? 'btn-outline-warning' : 'btn-outline-success' ?>"
       type='submit'><?php echo $editMessage ? 'Edit' : 'Send' ?></button>
   </form>
