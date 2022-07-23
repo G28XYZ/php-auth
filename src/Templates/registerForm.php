@@ -2,7 +2,7 @@
 
 
 if(isset($_POST['name']) && $_POST['password'] && $_POST['email']) {
-  
+
   if($this->validation->checkValidation($_POST)) {
 
     $this->auth->isRegister = $this->user->findByParameter('email', $_POST['email']);
@@ -22,7 +22,7 @@ if(isset($_POST['name']) && $_POST['password'] && $_POST['email']) {
 
   <div class="col">
     <label for="validationServer03" class="form-label">Имя</label>
-    <input type="text" class="form-control <?php echo $this->validation->isName ? 'is-invalid' : 'is-valid' ?>"
+    <input type="text" class="form-control <?php echo $this->validation->isName ? 'is-invalid' : '' ?>"
       aria-describedby="validationServer03Feedback" name='name' type='text' required
       value="<?php echo $_POST['name'] ?? '' ?>">
     <div id="validationServerUsernameFeedback"
@@ -33,7 +33,7 @@ if(isset($_POST['name']) && $_POST['password'] && $_POST['email']) {
 
   <div class="col">
     <label for="validationServer03" class="form-label">Email</label>
-    <input type="text" class="form-control <?php echo $this->validation->isEmail ? 'is-invalid' : 'is-valid' ?>"
+    <input type="text" class="form-control <?php echo $this->validation->isEmail ? 'is-invalid' : '' ?>"
       aria-describedby="validationServer03Feedback" name='email' type='text' required
       value="<?php echo $_POST['email'] ?? '' ?>">
     <div id="validationServerUsernameFeedback"
@@ -44,9 +44,8 @@ if(isset($_POST['name']) && $_POST['password'] && $_POST['email']) {
 
   <div class="col">
     <label class="form-label">Пароль</label>
-    <input id="inputPassword"
-      class="form-control <?php echo $this->validation->isPassword ? 'is-invalid' : 'is-valid' ?>" name='password'
-      type='password' required value="<?php echo $_POST['password'] ?? '' ?>">
+    <input id="inputPassword" class="form-control <?php echo $this->validation->isPassword ? 'is-invalid' : '' ?>"
+      name='password' type='password' required value="<?php echo $_POST['password'] ?? '' ?>">
     <div class="<?php echo $this->validation->isPassword ? 'invalid-feedback' : 'valid-feedback' ?>">
       <?php echo $this->validation->isPassword ?>
     </div>
