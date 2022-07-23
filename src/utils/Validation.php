@@ -25,15 +25,15 @@ class Validation {
         $password = strtolower($password);
         $haveSymbols = preg_match(REG_FOR_SYMBOLS, $password);
         $singleMatch = preg_match(REG_FOR_PASSWORD, $password);
-        return (strlen($singleMatch) > 1 || $haveSymbols) ? errorMessages['password'] : '';
+        return ($singleMatch == 0 || $haveSymbols) ? errorMessages['password'] : '';
     }
 
     public function validateName($name) {
         $name = strtolower($name);
         $haveSymbols = preg_match(REG_FOR_SYMBOLS, $name);
-        $singleMatch = strlen(preg_match(REG_FOR_NAME, $name));
+        $singleMatch = preg_match(REG_FOR_NAME, $name);
         $numberMatch = preg_match('/[0-9]/', $name);
-        return ($numberMatch || !$singleMatch || $singleMatch > 1 || $haveSymbols) ? errorMessages['name'] : '';
+        return ($numberMatch || $singleMatch == 0 || $haveSymbols) ? errorMessages['name'] : '';
     }
 
     function checkValidation($data) {

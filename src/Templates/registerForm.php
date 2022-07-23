@@ -2,16 +2,20 @@
 
 
 if(isset($_POST['name']) && $_POST['password'] && $_POST['email']) {
+    var_dump($this->validation->validateEmail($_POST['email']));
+    var_dump($this->validation->validateName($_POST['name']));
+    var_dump($this->validation->validatePassword($_POST['password']));
 
-  if($this->validation->checkValidation($_POST)) {
 
-    $this->auth->isRegister = $this->user->findByParameter('email', $_POST['email']);
+//   if($this->validation->checkValidation($_POST)) {
 
-    if($this->auth->isRegister === false) {
-      $this->user->createUser($_POST);
-      header("Location: /?login=1");
-    }
-  }
+//     $this->auth->isRegister = $this->user->findByParameter('email', $_POST['email']);
+
+//     if($this->auth->isRegister === false) {
+//       $this->user->createUser($_POST);
+//       header("Location: /?login=1");
+//     }
+//   }
 }
 ?>
 
@@ -23,7 +27,7 @@ if(isset($_POST['name']) && $_POST['password'] && $_POST['email']) {
   <div class="col">
     <label for="validationServer03" class="form-label">Имя</label>
     <input type="text" class="form-control <?php echo $this->validation->isName ? 'is-invalid' : '' ?>"
-      aria-describedby="validationServer03Feedback" name='name' type='text' required
+      aria-describedby="validationServer03Feedback" name='name' type='text' required minlength="2"
       value="<?php echo $_POST['name'] ?? '' ?>">
     <div id="validationServerUsernameFeedback"
       class="<?php echo $this->validation->isName ? 'invalid-feedback' : 'valid-feedback' ?>">
