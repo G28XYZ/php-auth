@@ -1,6 +1,6 @@
 <?php
 
-namespace Utils;
+namespace utils;
 
 require_once __DIR__ . '/constants.php';
 

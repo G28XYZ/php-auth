@@ -5,7 +5,7 @@ namespace App\Controllers;
 use App\Models\Post;
 use App\Models\Auth;
 use App\Models\User;
-use Utils\Validation;
+use utils\Validation;
 
 class Index extends BaseController
 {
