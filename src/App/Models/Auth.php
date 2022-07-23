@@ -6,7 +6,7 @@ use App\Model;
 
 class Auth extends Model {
 
-  protected const TABLE = 'auth';
+  protected const TABLE = 'users';
 
   public $data = [];
   public $isAuth = false;

@@ -1,6 +1,9 @@
 <?php
 $posts = $this->post->findAll();
+// сортировка по id по порядку
+usort($posts, fn($a, $b) => strcmp($a->id, $b->id));;
 $postIds = [];
+$editMessage = '';
 foreach($posts as $post) {
   if($this->user->id == $post->user_post_id) {
     $postIds[] = (string)$post->id;
@@ -14,17 +17,17 @@ if(isset($_POST['message'])) {
   $this->post->content = $_POST['message'];
   
   if(strlen($_POST['message'])) {
-    $this->post->save();
+    $this->post->save($_GET['postId'] ?? '');
     header('Location: /');
   }
 }
 
 if(isset($_GET['userId'])) {
-  if(array_search($_GET['postId'], $postIds) === false) {
+  if(array_search($_GET['postId'], $postIds) === false && $_GET['userId'] != $this->user->id) {
+    $editMessage = '';
     header('Location: /');
-  } 
-  if($_GET['userId'] != $this->user->id) {
-    header('Location: /');
+  } else {
+    $editMessage = $this->post->findByParameter('id', $_GET['postId'])->content ?? '';
   }
   if(isset($_GET['delete']) && $_GET['delete']) {
     $this->post->delete($_GET['postId']);
@@ -58,7 +61,9 @@ if(isset($_GET['userId'])) {
   </div>
 
   <form action="" method="post" class='chat__textarea'>
-    <textarea class="form-control" name="message" cols="30" rows="5" minlength="1" required></textarea>
-    <button class="btn btn-outline-success" type='submit'>Send</button>
+    <textarea class="chat__textarea-content form-control" name="message" cols="30" rows="5" minlength="1" required><?php echo $editMessage ?>
+    </textarea>
+    <button class="btn <?php echo $editMessage ? 'btn-outline-warning' : 'btn-outline-success' ?>"
+      type='submit'><?php echo $editMessage ? 'Edit' : 'Send' ?></button>
   </form>
 </section>

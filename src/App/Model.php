@@ -19,7 +19,7 @@ abstract class Model
 
     public function findByParameter($name, $value) {
         $db = Db::instance();
-        $sql = "SELECT * FROM users WHERE $name=:value";
+        $sql = "SELECT * FROM " . static::TABLE . " WHERE $name=:value";
         $data = $db->query($sql, static::class, [':value'=>$value]);
         return $data[0] ?? false;
     }
@@ -62,8 +62,9 @@ abstract class Model
         $db->execute($sql, $data);
     }
 
-    public function save() {
-        if(isset($this->id)) {
+    public function save($id='') {
+        $this->id = $id;
+        if($this->id) {
             $this->update();
         } else {
             $this->insert();

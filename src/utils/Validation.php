@@ -8,6 +8,7 @@ use const constants\REG_FOR_NAME;
 use const constants\REG_FOR_EMAIL;
 use const constants\REG_FOR_SYMBOLS;
 use const constants\REG_FOR_PASSWORD;
+use const constants\errorMessages;
 
 class Validation {
     protected const TABLE = 'validation';
@@ -17,14 +18,14 @@ class Validation {
     public $isName;
 
     public function validateEmail($email) {
-        return !preg_match(REG_FOR_EMAIL, strtolower($email)) ? 'Введите валидный email' : '';
+        return !preg_match(REG_FOR_EMAIL, strtolower($email)) ? errorMessages['email'] : '';
     }
 
     public function validatePassword($password) {
         $password = strtolower($password);
         $haveSymbols = preg_match(REG_FOR_SYMBOLS, $password);
         $singleMatch = preg_match(REG_FOR_PASSWORD, $password);
-        return (strlen($singleMatch) > 1 || $haveSymbols) ? 'Пароль содержит не допустимые символы. Текст может состоять из цифр, латиницы, кириллицы, дефиса.' : '';
+        return (strlen($singleMatch) > 1 || $haveSymbols) ? errorMessages['password'] : '';
     }
 
     public function validateName($name) {
@@ -32,7 +33,7 @@ class Validation {
         $haveSymbols = preg_match(REG_FOR_SYMBOLS, $name);
         $singleMatch = strlen(preg_match(REG_FOR_NAME, $name));
         $numberMatch = preg_match('/[0-9]/', $name);
-        return ($numberMatch || !$singleMatch || $singleMatch > 1 || $haveSymbols) ? 'Имя содержит недопустимые символы. Текст может состоять из латиницы, кириллицы, дефиса, пробела.' : '';
+        return ($numberMatch || !$singleMatch || $singleMatch > 1 || $haveSymbols) ? errorMessages['name'] : '';
     }
 
     function checkValidation($data) {

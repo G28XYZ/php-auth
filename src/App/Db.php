@@ -19,7 +19,12 @@ class Db
     protected function __construct()
     {
         // $this->dbh = new \PDO('mysql:host=localhost;dbname=php-auth', 'root', '');
-        $this->dbh = new PDO('pgsql:host=db;dbname=postgres', 'postgres', 'postgres');
+        // $ENV = getenv();
+        // $DB_PATH = (string)$ENV['DB_PATH'];
+        // $DB_USER = (string)$ENV['DB_USER'];
+        // $DB_PASS = (string)$ENV['DB_PASS'];
+        // $this->dbh = new PDO($DB_PATH, $DB_USER, $DB_PASS);
+        $this->dbh = new PDO('pgsql:host=ec2-44-206-197-71.compute-1.amazonaws.com;dbname=d5l915gas45dd0','cnittcwiselxjv', '879b4004958212b31f7e80fc97ed44a72436a54682cf1926d8b006cb58212fc4');
     }
 
     public function query($sql, $class, $param=[]): array

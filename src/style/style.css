@@ -1,116 +1,123 @@
 @import url(./normalize.css);
 
 .page {
-  display: flex;
-  flex-direction: column;
-  font-family: "Robot", "Arial", "Helvetica", sans-serif;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  -webkit-text-size-adjust: 100%;
-  -ms-text-size-adjust: 100%;
-  -moz-text-size-adjust: 100%;
-  text-rendering: optimizeLegibility;
-  min-width: 320px;
-  min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: "Robot", "Arial", "Helvetica", sans-serif;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+    min-width: 320px;
+    min-height: 100vh;
 }
 
 .main {
-  margin: 0 auto;
-  max-width: 320px;
+    margin: 0 auto;
+    max-width: 320px;
 }
 
 .badge {
-  --bs-badge-padding-x: 0.35em !important;
-  --bs-badge-font-size: 0.35em !important;
+    --bs-badge-padding-x: 0.35em !important;
+    --bs-badge-font-size: 0.35em !important;
 }
 
 .header {
-  margin: 0 auto;
-  max-width: 320px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding-bottom: 10px;
-  border-bottom: 1px solid black;
-  align-items: center;
-  width: 100%;
-  padding-top: 20px;
+    margin: 0 auto;
+    max-width: 320px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-bottom: 10px;
+    border-bottom: 1px solid black;
+    align-items: center;
+    width: 100%;
+    padding-top: 20px;
 }
 
 .header__logout {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 .header__button {
-  height: 30px;
-  height: min-content;
+    height: 30px;
+    height: min-content;
 }
 
 .header__title {
-  margin: 0;
-  padding-bottom: 20px;
+    margin: 0;
+    padding-bottom: 20px;
 }
 
 .badge {
-  font-size: 10px;
+    font-size: 10px;
 }
 
 .auth {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
 }
 
 .auth__title {
-  padding-top: 10px;
-  text-align: center;
+    padding-top: 10px;
+    text-align: center;
 }
 
 .auth__form {
-  display: flex;
-  flex-direction: column;
-  width: 320px;
-  gap: 10px;
+    display: flex;
+    flex-direction: column;
+    width: 320px;
+    gap: 10px;
 }
 
 .chat__messages {
-  display: flex;
-  flex-direction: column;
-  padding: 5px;
-  max-height: 300px;
-  height: 100%;
-  overflow: auto;
-  gap: 10px;
-  min-height: 350px;
-  width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    max-height: 300px;
+    height: 100%;
+    overflow: auto;
+    gap: 10px;
+    min-height: 350px;
+    width: 100%;
 }
 
 .chat__text-content {
-  width: auto;
+    width: auto;
+}
+
+.chat__textarea-content {
+    max-height: 70px;
+    min-height: 70px;
 }
 
 .chat__button {
-  display: none !important;
+    display: none !important;
 }
 
 .chat__button_active {
-  display: block !important;
+    display: block !important;
 }
 
 .chat__post {
-  width: 70%;
+    width: 70%;
 }
 
 .chat__post-author {
-  align-self: end;
+    align-self: end;
 }
 
 .chat__user {
-  font-size: 20px;
+    font-size: 20px;
 }
 
 .chat__textarea {
-  display: flex;
+    display: flex;
+    padding-top: 10px;
+    gap: 10px;
 }
