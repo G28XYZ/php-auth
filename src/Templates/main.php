@@ -40,28 +40,21 @@ session_start();
           99+
         </span>
       </h1>
-      <?php 
-        if($this->auth->isAuth) {
-          ?>
+      <?php if($this->auth->isAuth) : { ?>
       <div class='header__logout'>
         <button class='btn btn-outline-secondary header__button header__button_logout'>🚪⇤</button>
         <p>Привет <?php echo $this->user->full_name ?>!</p>
       </div>
-      <?php 
-        }
-        ?>
+      <?php } endif?>
     </header>
     <main class='main'>
       <?php $this->auth->isAuth && include __DIR__ . '/posts.php' ?>
       <section class='auth'>
         <?php
-      if($this->auth->isAuth === false) {
-        ?>
+      if($this->auth->isAuth === false) : { ?>
         <?php !($_GET['login'] ?? '') && include __DIR__ . '/registerForm.php' ?>
         <?php ($_GET['login'] ?? '') && include __DIR__ . '/loginForm.php' ?>
-        <?php
-      }
-      ?>
+        <?php } endif?>
       </section>
     </main>
   </div>
