@@ -11,7 +11,7 @@ foreach($this->post->allPosts as $post) {
 
 if(isset($_GET['userId'])) {
     $message = $this->post->findByParameter('id', $_GET['postId'])->content ?? '';
-    $this->textarea->onEditMessage = array_search($_GET['postId'], $postIds) && $_GET['userId'] == $this->user->id;
+    $this->textarea->onEditMessage = false !== array_search($_GET['postId'], $postIds) && $_GET['userId'] == $this->user->id;
     $this->textarea->message = $this->textarea->onEditMessage ? $message : '';
     $this->textarea->onEditMessage ?? header('Location: /');
     if(isset($_GET['delete']) && $_GET['delete']) {
@@ -23,7 +23,7 @@ if(isset($_GET['userId'])) {
 if(isset($_POST['message_edit'])) {
     $this->post->author = $this->user->full_name;
     $this->post->user_post_id = $this->user->id;
-    $this->post->content = $_POST['message'];
+    $this->post->content = strip_tags($_POST['message']);
     if(strlen($_POST['message'])) {
         $this->post->save($_GET['postId'] ?? '');
         header('Location: /');

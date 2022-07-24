@@ -1,7 +1,7 @@
 <?php
 $posts = $this->post->findAll();
 // сортировка по id по порядку
-usort($posts, fn($a, $b) => strcmp($a->id, $b->id));
+usort($posts, fn($a, $b) =>  $a->id > $b->id ? 1 : -1);
 $this->post->allPosts = $posts;
 ?>
 <section class='chat'>
