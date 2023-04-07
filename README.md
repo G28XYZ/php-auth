@@ -8,7 +8,7 @@
 
 ## Link:
 
-<a href='https://php-8.herokuapp.com/'>Messenger</a>
+<a href='http://kucherenko-aleksandr.ru/phpauth'>Messenger</a>
 
 ## Стек:
 
